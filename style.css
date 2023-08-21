@@ -1,0 +1,94 @@
+:root{
+  --clocksize: 160px;
+}
+
+body{
+  padding: 40px;
+  background-color: #121212;  
+}
+
+.time {
+  border-right: solid 3px rgba(0,255,0,.75);
+  white-space: nowrap;
+  overflow: hidden;    
+  font-family: 'Source Code Pro', monospace;  
+  font-size: var(--clocksize);
+  color: rgba(255,255,255,.70);
+}
+
+/* Animation */
+ .hWrite {
+  animation: 
+             animated-text 1s steps(8,end) 1s 1 normal both,
+             animated-cursor 300ms steps(8,end) infinite;
+}
+
+
+ .hour {
+  animation: animated-text-h 0.5s steps(8,end) 0.5s 1 normal both,
+             animated-cursor 300ms steps(8,end) infinite;
+
+}
+ .mWrite{
+  animation: animated-text-m-r 1s steps(5,end) 1s 1 normal both,
+             animated-cursor 300ms steps(5,end) infinite;
+
+ }
+ .minute {
+  animation: animated-text-m 0.5s steps(5,end) 0.5s 1 normal both,
+             animated-cursor 300ms steps(5,end) infinite;
+
+}
+ .sWrite{
+  animation: animated-text-s-r 0.2s steps(2,end) 0.2s 1 normal both,
+             animated-cursor 300ms steps(2,end) infinite;
+ }
+ .second {
+  animation: animated-text-s 0.2s steps(2,end) 0.2s 1 normal both,
+             animated-cursor 300ms steps(2,end) infinite;
+}
+
+/* animated-text-h 2s steps(8,end) 1s 1 normal both,
+             animated-cursor-r 300ms steps(8,end) infinite; */
+/* animated-text-m 2s steps(5,end) 1s 1 normal both,
+             animated-cursor-r 300ms steps(5,end) infinite;*/
+/* animated-text-s 0.3s steps(2,end) 0.3s 1 normal both,
+             animated-cursor-r 300ms steps(2,end) infinite; */
+
+/* text animation */
+
+@keyframes animated-text{
+  from{width: 0;}
+  to{width: calc(var(--clocksize) + 600px);}
+}
+@keyframes animated-text-h{
+from{width: calc(var(--clocksize) + 600px);}
+  to{width: 0}
+}
+
+@keyframes animated-text-m{
+  from{width: calc(var(--clocksize) + 600px);}
+  to{width: calc(var(--clocksize) + 120px)}
+}
+@keyframes animated-text-m-r{
+  from{width: calc(var(--clocksize) + 120px);}
+  to{ width: calc(var(--clocksize) + 600px);}
+}
+
+@keyframes animated-text-s{
+  from{width: calc(var(--clocksize) + 600px);}
+  to{width: calc(var(--clocksize) + 400px)}
+}
+@keyframes animated-text-s-r{
+  from{width: calc(var(--clocksize) + 400px);}
+  to{ width: calc(var(--clocksize) + 600px);}
+}
+
+/* cursor animations */
+
+@keyframes animated-cursor{
+  from{border-right-color: orange;}
+  to{border-right-color: transparent;}
+}
+
+

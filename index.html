@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="startTime()">
+
+<h1 style="color: white;">JavaScript Clock</h2>
+
+<div id="txt" class="time write"></div>
+
+
+
+<script>
+function startTime() {
+  const today = new Date();
+  let h = today.getHours();
+   h = ("0" + h).slice(-2);
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+
+  document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s;
+
+  
+  
+  updateClock(m, 58, 2000,  "hour", "hWrite");
+  if (s >= 57 && m < 57) {updateClock(s, 58, 2000,"minute", "mWrite");}
+  if (s <= 57 && s > 2) {updateClock(s, 1, 625,"second", "sWrite");} else{
+    
+    
+  }
+  
+  
+  
+  setTimeout(startTime, 1000);
+
+  
+  }
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function updateClock(s, t, w ,removeclass, writeclass){
+  if (s >= t) {
+    
+    remove(removeclass);
+    setTimeout(function(){write(removeclass, writeclass)}, w);
+  }
+}
+
+function remove(removeclass) {
+  
+  document.getElementById('txt').classList.remove(document.getElementById('txt').classList.item(1));
+
+  document.getElementById('txt').classList.add(removeclass);
+  
+}
+
+function write(removeclass, writeclass){
+  
+  document.getElementById('txt').classList.remove(removeclass);
+  document.getElementById('txt').classList.add(writeclass);
+  
+}
+
+
+</script>
+
+</body>
+</html>
